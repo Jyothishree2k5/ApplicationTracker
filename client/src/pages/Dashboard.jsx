@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { applicationsAPI, botAPI } from '../services/api';
 import { 
@@ -17,6 +18,7 @@ import { FileText, Clock, CheckCircle, XCircle, Bot, Activity } from 'lucide-rea
 
 const Dashboard = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [stats, setStats] = useState(null);
   const [botActivity, setBotActivity] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -220,7 +222,7 @@ const Dashboard = () => {
           {user?.role === 'applicant' && (
             <button 
               className="btn-primary"
-              onClick={() => window.location.href = '/applications'}
+              onClick={() => navigate('/applications')}
             >
               Create New Application
             </button>
@@ -229,13 +231,13 @@ const Dashboard = () => {
             <>
               <button 
                 className="btn-primary"
-                onClick={() => window.location.href = '/job-roles'}
+                onClick={() => navigate('/job-roles')}
               >
                 Create Job Role
               </button>
               <button 
                 className="btn-secondary"
-                onClick={() => window.location.href = '/applications'}
+                onClick={() => navigate('/applications')}
               >
                 Manage Applications
               </button>
@@ -244,7 +246,7 @@ const Dashboard = () => {
           {(user?.role === 'bot' || user?.role === 'admin') && (
             <button 
               className="btn-primary"
-              onClick={() => window.location.href = '/bot'}
+              onClick={() => navigate('/bot')}
             >
               Bot Control Panel
             </button>
