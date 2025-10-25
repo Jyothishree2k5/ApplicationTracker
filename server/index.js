@@ -20,7 +20,7 @@ connectDB();
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'development' 
-    ? ['https://application-tracker-pi-five.vercel.app/login']
+    ? ['https://application-tracker-pi-five.vercel.app']
     : 'http://localhost:3000',
   credentials: true
 }));
